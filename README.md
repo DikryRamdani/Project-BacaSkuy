@@ -1,3 +1,8 @@
+#KELOMPOK 8
+Anggota : 
+- Dikry Ramdani
+- Mirza Ramadhan
+
 # Project BacaSkuy
 
 Project BacaSkuy adalah aplikasi web berbasis Laravel untuk mengelola dan menyajikan konten bacaan (mis. buku, artikel, paket konten). Aplikasi dirancang untuk memudahkan pengunggahan paket konten, pengelolaan aset, serta otentikasi pengguna melalui metode tradisional maupun social OAuth.
