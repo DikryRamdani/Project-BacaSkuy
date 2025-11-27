@@ -1,59 +1,44 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project BacaSkuy
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Project BacaSkuy adalah aplikasi web berbasis Laravel untuk mengelola dan menyajikan konten bacaan (mis. buku, artikel, paket konten). Aplikasi dirancang untuk memudahkan pengunggahan paket konten, pengelolaan aset, serta otentikasi pengguna melalui metode tradisional maupun social OAuth.
 
-## About Laravel
+> Catatan: dokumentasi pendukung lain tersedia di repo: `DATABASE_GUIDE.md`, `OAUTH_SETUP_GUIDE.md`, `SOCIAL_AUTH_SETUP.md`, `UPLOAD_ZIP_GUIDE.md`.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tech stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Backend: Laravel (PHP) — struktur proyek menggunakan folder standar Laravel (app/, routes/, resources/).
+- Templating: Blade (Laravel Blade templates).
+- Frontend tooling: Node.js, npm, Vite (dikonfigurasi lewat `vite.config.js`).
+- Testing: PHPUnit (`phpunit.xml` tersedia).
+- Database: MySQL/PostgreSQL (lihat `DATABASE_GUIDE.md` untuk panduan setup dan migrasi).
+- Authentication: OAuth / Social Auth (panduan pada `OAUTH_SETUP_GUIDE.md` dan `SOCIAL_AUTH_SETUP.md`).
+- Penyimpanan & backup: ada skrip backup/restore dan folder backup (lihat file `.bat` dan `database/backups/`).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur utama
 
-## Learning Laravel
+- Pengelolaan konten bacaan:
+  - Impor paket konten melalui ZIP (format & langkah pada `UPLOAD_ZIP_GUIDE.md`).
+  - Penyimpanan aset dan metadata terkait konten.
+  - Penyajian konten lewat tampilan web (Blade views dan routes).
+- Otentikasi:
+  - Login tradisional.
+  - Integrasi social OAuth untuk login dengan penyedia pihak ketiga (Google, Facebook, dll.) — konfigurasi ada di `OAUTH_SETUP_GUIDE.md` dan `SOCIAL_AUTH_SETUP.md`.
+- Backup & restore:
+  - Skrip otomatis untuk backup/restore database dan konten (`backup-database.bat`, `backup-content-only.bat`, `restore-database.bat`, `restore-content-only.bat`).
+  - Panduan database di `DATABASE_GUIDE.md`.
+- Frontend modern:
+  - Build tooling menggunakan Vite, manajemen paket lewat `package.json`.
+- Struktur yang mudah dikembangkan:
+  - Pemisahan concerns antara models, controllers, routes, views, dan asset publik.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Struktur penting repository
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- app/                       : kode aplikasi (models, controllers, services)
+- routes/                    : definisi route aplikasi
+- resources/                 : views (Blade), aset front-end
+- public/                    : file publik yang disajikan web server
+- database/                  : migrasi, seeders, dan panduan `DATABASE_GUIDE.md`
+- storage/                   : penyimpanan file yang diunggah
+- composer.json              : dependensi PHP
+- package.json               : dependensi JavaScript
+- UPLOAD_ZIP_GUIDE.md        : panduan upload dan format ZIP untuk impor konten
